@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
 import com.alibaba.androidhighproject.touchClick.TouchActivity;
+import com.alibaba.androidhighproject.touchClick.TouchGroupActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     private void addMenu() {
-        mData.add("touchClick:Android触摸事件传递机制");
+        mData.add("touchClick:Android_View触摸事件传递机制");
+        mData.add("touchClick:Android_ViewGroup触摸事件传递机制");
     }
 
 
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         if (i == 0) {//touchClick:Android触摸事件传递机制
             startActivity(new Intent(this, TouchActivity.class));
+        }
+        if (i == 1) {//touchClick:Android_ViewGroup触摸事件传递机制
+            startActivity(new Intent(this, TouchGroupActivity.class));
         }
     }
 }
