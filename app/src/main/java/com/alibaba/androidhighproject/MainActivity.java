@@ -1,5 +1,6 @@
 package com.alibaba.androidhighproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
+import com.alibaba.androidhighproject.touchClick.TouchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         if (i == 0) {//touchClick:Android触摸事件传递机制
-
+            startActivity(new Intent(this, TouchActivity.class));
         }
     }
 }
