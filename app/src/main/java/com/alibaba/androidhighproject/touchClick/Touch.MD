@@ -26,8 +26,8 @@
     
 总结流程如下：  
 
-    ![image text](https://github.com/xsg2357/AndroidHighProjectDemo/blob/master/app/src/main/java/com/alibaba/androidhighproject/touchClick/view1.png)
+  ![image text](https://github.com/xsg2357/AndroidHighProjectDemo/blob/master/app/src/main/java/com/alibaba/androidhighproject/touchClick/view1.png)
      
 从流程图可以看出：  
 
-    ![image text](https://github.com/xsg2357/AndroidHighProjectDemo/blob/master/app/src/main/java/com/alibaba/androidhighproject/touchClick/view2.png)
+   ![image text](https://github.com/xsg2357/AndroidHighProjectDemo/blob/master/app/src/main/java/com/alibaba/androidhighproject/touchClick/view2.png)
