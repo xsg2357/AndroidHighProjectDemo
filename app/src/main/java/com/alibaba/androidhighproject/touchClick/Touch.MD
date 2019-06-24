@@ -23,7 +23,7 @@
     2019-06-24 15:19:12.607 21640-21640/com.alibaba.androidhighproject E/SHIT: --onTouchEvent--:执行了ACTION_UP
     2019-06-24 15:19:12.610 21640-21640/com.alibaba.androidhighproject E/SHIT: Activity--TouchTextView--:执行了
     ```
-    总结流程如下：
+总结流程如下：
     ![image text](com/alibaba/androidhighproject/touchClick/view1.png)
-    从流程图可以看出：
+从流程图可以看出：
     ![image text](com/alibaba/androidhighproject/touchClick/view2.png)
