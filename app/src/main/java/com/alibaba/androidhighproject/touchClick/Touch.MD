@@ -1,5 +1,5 @@
 ### View的传递事件机制
-    #### 点击了自定义view  
+   #### 点击了自定义view  
     
         ```
         2019-06-24 15:19:12.544 21640-21640/com.alibaba.androidhighproject E/SHIT: Activity--dispatchTouchEvent--:执行了
@@ -25,7 +25,7 @@
         2019-06-24 15:19:12.607 21640-21640/com.alibaba.androidhighproject E/SHIT: --onTouchEvent--:执行了ACTION_UP
         2019-06-24 15:19:12.610 21640-21640/com.alibaba.androidhighproject E/SHIT: Activity--TouchTextView--:执行了
         ```  
-    #### 没点击自定义view
+   #### 没点击自定义view
     
         ```
         2019-06-24 15:37:49.456 22426-22426/com.alibaba.androidhighproject E/SHIT: Activity--dispatchTouchEvent--:执行了
