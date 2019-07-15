@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_align_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_200"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="具体数值：200dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_align_left" />
+
+    <Button
+        android:id="@+id/btn_match"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0dp——{match_parent}"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_200" />
+
+    <Button
+        android:id="@+id/btn_dimensradio"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="------------------__宽高比 2:1_----------------------_"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_match" />
+
+
+    <Button
+        android:id="@+id/btn_dimensradio_h"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="---------16：9的比例设置高度 h->w---------_"
+        app:layout_constraintDimensionRatio="H,18:9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_dimensradio" />
+
+    <Button
+        android:id="@+id/btn_dimensradio_w"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="---------9:18的比例设置高度 w -> h。---------_"
+        app:layout_constraintDimensionRatio="W,9:18"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_dimensradio_h" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -11,9 +11,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
+import com.alibaba.androidhighproject.constraint.ConstraintLineAct;
+import com.alibaba.androidhighproject.constraint.ConstraintPercentAct;
+import com.alibaba.androidhighproject.constraint.ConstraintRelativeIdAct;
+import com.alibaba.androidhighproject.constraint.ConstraintRelativeParentAct;
+import com.alibaba.androidhighproject.constraint.ConstraintSizeAct;
 import com.alibaba.androidhighproject.touchClick.TouchActivity;
 import com.alibaba.androidhighproject.touchClick.TouchGroupActivity;
 
@@ -38,19 +42,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         lvMenu.setAdapter(mAdapter);
         lvMenu.setOnItemClickListener(this);
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
     }
 
 
     private void addMenu() {
         mData.add("touchClick:Android_View触摸事件传递机制");
         mData.add("touchClick:Android_ViewGroup触摸事件传递机制");
+        mData.add("constraint（约束布局）:相对位置——parent");
+        mData.add("constraint（约束布局）:相对位置——id");
+        mData.add("constraint（约束布局）: 尺寸约束");
+        mData.add("constraint（约束布局）: percent/ 位置偏向/权重/链");
+        mData.add("constraint（约束布局）: 辅助线");
     }
 
 
@@ -83,6 +87,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         if (i == 1) {//touchClick:Android_ViewGroup触摸事件传递机制
             startActivity(new Intent(this, TouchGroupActivity.class));
+        }
+        if (i == 2) {//constraint:相对位置 parent
+            startActivity(new Intent(this, ConstraintRelativeParentAct.class));
+        }
+        if (i == 3) {//constraint:相对位置 id
+            startActivity(new Intent(this, ConstraintRelativeIdAct.class));
+        }
+        if (i == 4) {//constraint:尺寸约束
+            startActivity(new Intent(this, ConstraintSizeAct.class));
+        }
+        if (i == 5) {//percent/ 位置偏向/权重
+            startActivity(new Intent(this, ConstraintPercentAct.class));
+        }
+        if (i == 6) {//辅助线
+            startActivity(new Intent(this, ConstraintLineAct.class));
         }
     }
 }
