@@ -21,11 +21,13 @@
         </activity>
         <activity android:name=".touchClick.TouchActivity" />
         <activity android:name=".touchClick.TouchGroupActivity" />
+        <activity android:name=".constraint.ConstraintMainAct" />
         <activity android:name=".constraint.ConstraintRelativeParentAct" />
         <activity android:name=".constraint.ConstraintRelativeIdAct" />
         <activity android:name=".constraint.ConstraintSizeAct" />
         <activity android:name=".constraint.ConstraintPercentAct" />
         <activity android:name=".constraint.ConstraintLineAct" />
+        <activity android:name=".RxJava.binding.RxBindingTest1Act" />
     </application>
 
 </manifest>

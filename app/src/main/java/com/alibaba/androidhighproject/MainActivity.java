@@ -12,8 +12,10 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.alibaba.androidhighproject.RxJava.binding.RxBindingTest1Act;
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
 import com.alibaba.androidhighproject.constraint.ConstraintLineAct;
+import com.alibaba.androidhighproject.constraint.ConstraintMainAct;
 import com.alibaba.androidhighproject.constraint.ConstraintPercentAct;
 import com.alibaba.androidhighproject.constraint.ConstraintRelativeIdAct;
 import com.alibaba.androidhighproject.constraint.ConstraintRelativeParentAct;
@@ -50,11 +52,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void addMenu() {
         mData.add("touchClick:Android_View触摸事件传递机制");
         mData.add("touchClick:Android_ViewGroup触摸事件传递机制");
-        mData.add("constraint（约束布局）:相对位置——parent");
-        mData.add("constraint（约束布局）:相对位置——id");
-        mData.add("constraint（约束布局）: 尺寸约束");
-        mData.add("constraint（约束布局）: percent/ 位置偏向/权重/链");
-        mData.add("constraint（约束布局）: 辅助线");
+        mData.add("constraint（约束布局）");
+        mData.add("RxBinding:RxBindingTest1Act");
     }
 
 
@@ -89,19 +88,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(new Intent(this, TouchGroupActivity.class));
         }
         if (i == 2) {//constraint:相对位置 parent
-            startActivity(new Intent(this, ConstraintRelativeParentAct.class));
+            startActivity(new Intent(this, ConstraintMainAct.class));
         }
-        if (i == 3) {//constraint:相对位置 id
-            startActivity(new Intent(this, ConstraintRelativeIdAct.class));
+        if (i == 3) {//constraint:相对位置 parent
+            startActivity(new Intent(this, RxBindingTest1Act.class));
         }
-        if (i == 4) {//constraint:尺寸约束
-            startActivity(new Intent(this, ConstraintSizeAct.class));
-        }
-        if (i == 5) {//percent/ 位置偏向/权重
-            startActivity(new Intent(this, ConstraintPercentAct.class));
-        }
-        if (i == 6) {//辅助线
-            startActivity(new Intent(this, ConstraintLineAct.class));
-        }
+
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/buttonPanel"
+        android:layout_width="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Button点击事件Binding"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/edit_query"
+        android:layout_width="0dp"
+        android:hint="EditText输入事件Binding"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonPanel1"
+        android:layout_width="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Button长按事件Binding"
+        app:layout_constraintTop_toBottomOf="@id/edit_query"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonPanel2"
+        android:layout_width="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Button防止重复点击"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel1"
+        android:layout_height="wrap_content" />
+
+</android.support.constraint.ConstraintLayout>
