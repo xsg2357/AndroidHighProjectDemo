@@ -174,19 +174,19 @@ public class WsMainActivity extends AppCompatActivity {
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.menu_ws_main, menu);
+//    getMenuInflater().inflate(R.menu.menu_ws_main, menu);
     return true;
   }
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-      if (item.getItemId() == R.id.menu_source) {//调起浏览器更新app
+     /* if (item.getItemId() == R.id.menu_source) {//调起浏览器更新app
           Intent intent = new Intent();
           intent.setAction("android.intent.action.VIEW");
           Uri url = Uri.parse("https://github.com/Rabtman/WsManager");
           intent.setData(url);
           startActivity(intent);
-      }
+      }*/
     return super.onOptionsItemSelected(item);
   }
 
