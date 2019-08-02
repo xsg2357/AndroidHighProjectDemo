@@ -3,9 +3,6 @@ package com.alibaba.androidhighproject.websocket;
 import okhttp3.WebSocket;
 import okio.ByteString;
 
-/**
- * @author rabtman
- */
 
 interface IWsManager {
 

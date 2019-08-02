@@ -3,9 +3,6 @@ package com.alibaba.androidhighproject.websocket.listener;
 import okhttp3.Response;
 import okio.ByteString;
 
-/**
- * @author rabtman 可用于监听ws连接状态并进一步拓展
- */
 public abstract class WsStatusListener {
 
   public void onOpen(Response response) {

@@ -19,9 +19,6 @@ import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import okio.ByteString;
 
-/**
- * @author rabtman
- */
 
 public class WsManager implements IWsManager {
 

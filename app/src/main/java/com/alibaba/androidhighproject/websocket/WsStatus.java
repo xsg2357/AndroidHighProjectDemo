@@ -1,8 +1,5 @@
 package com.alibaba.androidhighproject.websocket;
 
-/**
- * @author rabtman
- */
 
 public class WsStatus {
 
