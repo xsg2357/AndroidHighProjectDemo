@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.alibaba.androidhighproject.R;
-import com.alibaba.androidhighproject.common.KtUtils;
 import com.alibaba.androidhighproject.common.Utils;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.jakewharton.rxbinding3.widget.RxTextView;

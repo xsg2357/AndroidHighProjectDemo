@@ -22,6 +22,7 @@ import com.alibaba.androidhighproject.constraint.ConstraintRelativeParentAct;
 import com.alibaba.androidhighproject.constraint.ConstraintSizeAct;
 import com.alibaba.androidhighproject.touchClick.TouchActivity;
 import com.alibaba.androidhighproject.touchClick.TouchGroupActivity;
+import com.alibaba.androidhighproject.websocket.WsMainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mData.add("touchClick:Android_ViewGroup触摸事件传递机制");
         mData.add("constraint（约束布局）");
         mData.add("RxBinding:RxBindingTest1Act");
+        mData.add("OkHttp3:WebSocket");
     }
 
 
@@ -92,6 +94,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         if (i == 3) {//constraint:相对位置 parent
             startActivity(new Intent(this, RxBindingTest1Act.class));
+        }
+        if (i == 4) {//OkHttp3:WebSocket
+            startActivity(new Intent(this, WsMainActivity.class));
         }
 
     }
