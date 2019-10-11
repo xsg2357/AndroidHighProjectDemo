@@ -20,6 +20,7 @@ import com.alibaba.androidhighproject.constraint.ConstraintPercentAct;
 import com.alibaba.androidhighproject.constraint.ConstraintRelativeIdAct;
 import com.alibaba.androidhighproject.constraint.ConstraintRelativeParentAct;
 import com.alibaba.androidhighproject.constraint.ConstraintSizeAct;
+import com.alibaba.androidhighproject.recyclerrefresh.DiffRecyclerActivity;
 import com.alibaba.androidhighproject.touchClick.TouchActivity;
 import com.alibaba.androidhighproject.touchClick.TouchGroupActivity;
 import com.alibaba.androidhighproject.websocket.WsMainActivity;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mData.add("constraint（约束布局）");
         mData.add("RxBinding:RxBindingTest1Act");
         mData.add("OkHttp3:WebSocket");
+        mData.add("RecyclerView最好的伙伴：AsyncListDiffer");
     }
 
 
@@ -97,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         if (i == 4) {//OkHttp3:WebSocket
             startActivity(new Intent(this, WsMainActivity.class));
+        }
+        if (i == 5) {//OkHttp3:WebSocket
+            startActivity(new Intent(this, DiffRecyclerActivity.class));
         }
 
     }

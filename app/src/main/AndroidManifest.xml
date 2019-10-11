@@ -33,6 +33,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".websocket.WsMainActivity" />
+        <activity android:name=".recyclerrefresh.DiffRecyclerActivity" />
         <activity android:name=".touchClick.TouchActivity" />
         <activity android:name=".touchClick.TouchGroupActivity" />
         <activity android:name=".constraint.ConstraintMainAct" />
