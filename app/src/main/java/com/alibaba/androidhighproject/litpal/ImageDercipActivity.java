@@ -44,7 +44,7 @@ public class ImageDercipActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decode_image);
-        ImageView iv_decode = findViewById(R.id.iv_decode);
+        iv_decode = findViewById(R.id.iv_decode);
 
         try {
             new Thread(
