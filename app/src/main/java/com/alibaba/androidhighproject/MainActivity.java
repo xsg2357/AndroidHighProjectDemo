@@ -2,29 +2,25 @@ package com.alibaba.androidhighproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.alibaba.androidhighproject.RxJava.binding.RxBindingTest1Act;
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
-import com.alibaba.androidhighproject.constraint.ConstraintLineAct;
 import com.alibaba.androidhighproject.constraint.ConstraintMainAct;
-import com.alibaba.androidhighproject.constraint.ConstraintPercentAct;
-import com.alibaba.androidhighproject.constraint.ConstraintRelativeIdAct;
-import com.alibaba.androidhighproject.constraint.ConstraintRelativeParentAct;
-import com.alibaba.androidhighproject.constraint.ConstraintSizeAct;
 import com.alibaba.androidhighproject.litpal.ImageDercipActivity;
 import com.alibaba.androidhighproject.recyclerrefresh.DiffRecyclerActivity;
 import com.alibaba.androidhighproject.touchClick.TouchActivity;
 import com.alibaba.androidhighproject.touchClick.TouchGroupActivity;
 import com.alibaba.androidhighproject.websocket.WsMainActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,14 +11,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * *******************************************
- * 标题 :                                     *
- * 编辑 : 向绍谷                               *
- * 日期 : 2019/10/21                             *
- * 描述 :                                     *
- * *******************************************
- */
 public class DownloadUtil {
     private static DownloadUtil downloadUtil;
     private final OkHttpClient okHttpClient;
@@ -35,13 +27,6 @@ public class DownloadUtil {
     }
 
 
-    /**
-     * @param url          下载连接
-     * @param destFileDir  下载的文件储存目录
-     * @param destFileName 下载文件名称，后面记得拼接后缀，否则手机没法识别文件类型
-     * @param listener     下载监听
-     */
-
     public void download(final String url, final String destFileDir, final String destFileName, final OnDownloadListener listener) {
 
         Request request = new Request.Builder()
@@ -56,11 +41,9 @@ public class DownloadUtil {
 //            e.printStackTrace();
 //        }
 
-        //异步请求
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                // 下载失败监听回调
                 listener.onDownloadFailed(e);
             }
 
@@ -72,7 +55,6 @@ public class DownloadUtil {
                 int len = 0;
                 FileOutputStream fos = null;
 
-                //储存下载文件的目录
                 File dir = new File(destFileDir,"");
                 if (!dir.exists()) {
                     dir.mkdirs();
@@ -88,11 +70,9 @@ public class DownloadUtil {
                         fos.write(buf, 0, len);
                         sum += len;
                         int progress = (int) (sum * 1.0f / total * 100);
-                        //下载中更新进度条
                         listener.onDownloading(progress);
                     }
                     fos.flush();
-                    //下载完成
                     listener.onDownloadSuccess(file);
                 } catch (Exception e) {
                     listener.onDownloadFailed(e);

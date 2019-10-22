@@ -7,23 +7,21 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.androidhighproject.R;
 
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -98,6 +96,7 @@ public class ImageDercipActivity extends AppCompatActivity {
 //                                        byte[] decode = Base64.decode(strS.toString().getBytes(), Base64.DEFAULT);
 //                                        byte[] decode = decoder.decode(buffer);
                                         byte[] decode = MyBase64.decode(buffer);
+//                                        byte[] decode = org.apache.commons.codec.binary.Base64.decodeBase64(buffer);
                                         String desFirst = new String(decode);
                                         Log.e("shit", "filePath1:" + desFirst);
                                         //            oStreamWriter.close();
@@ -106,6 +105,7 @@ public class ImageDercipActivity extends AppCompatActivity {
                                         }
                                         Log.e("shit", "filePath12:" + desFirst);
                                         byte[] decodeSecond = MyBase64.decode(desFirst);
+//                                        byte[] decodeSecond = org.apache.commons.codec.binary.Base64.decodeBase64(desFirst.getBytes());
 //                                        byte[] decodeSecond = Base64.decode(desFirst.getBytes(), Base64.DEFAULT);
 
 //                                        byte[] decodeSecond = decoder.decode(desFirst);

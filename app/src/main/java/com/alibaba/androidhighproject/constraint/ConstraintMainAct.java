@@ -2,12 +2,12 @@ package com.alibaba.androidhighproject.constraint;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.androidhighproject.R;
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
