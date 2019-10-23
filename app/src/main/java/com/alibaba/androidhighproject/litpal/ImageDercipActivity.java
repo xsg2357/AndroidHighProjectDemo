@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * *******************************************
@@ -51,7 +52,8 @@ public class ImageDercipActivity extends AppCompatActivity {
                                 @Override
                                 public void onDownloadSuccess(File dataFile) {
                                     Log.e("shit", "onDownloadSuccess: " + dataFile.getAbsolutePath());
-                                    byte[] buffer = new byte[1024];
+//                                    generateImage(dataFile.getAbsolutePath());
+                                     byte[] buffer = new byte[1024];
 
                                     //            URL url = new URL(pathName);
                                     //            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -60,7 +62,7 @@ public class ImageDercipActivity extends AppCompatActivity {
                                     //            InputStream is = conn.getInputStream();
                                     //                                    InputStream is = getAssets().open(pathName);
                                     try {
-                                        FileInputStream is = new FileInputStream(dataFile.getAbsoluteFile());
+                                        FileInputStream is = new FileInputStream(dataFile);
                                         FileOutputStream fos = new FileOutputStream(dataFile);
 //                                        java.util.Base64.Decoder decoder = java.util.Base64.getDecoder();
                                         int byteCount;
@@ -84,7 +86,7 @@ public class ImageDercipActivity extends AppCompatActivity {
                                         //            OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(dataFile), "utf-8");
                                         //            oStreamWriter.append(desFirst);
 //                                        String key = "9fua63ms0vcsdc04";
-                                        Log.e("shit", "filePath10:" + new String(buffer));
+                                        Log.e("shit", "filePath10:" + new String(buffer, StandardCharsets.UTF_8));
 //                                        Log.e("shit", "filePath10:" + strS);
                                         //            String key = "ba2be2ef5db30c83b48d76109643a07d";
                                         //            String trans = "AES/CBC/PKCS5Padding";
@@ -97,19 +99,19 @@ public class ImageDercipActivity extends AppCompatActivity {
 //                                        byte[] decode = decoder.decode(buffer);
                                         byte[] decode = MyBase64.decode(buffer);
 //                                        byte[] decode = org.apache.commons.codec.binary.Base64.decodeBase64(buffer);
-                                        String desFirst = new String(decode);
+                                        String desFirst = new String(decode, StandardCharsets.UTF_8);
                                         Log.e("shit", "filePath1:" + desFirst);
                                         //            oStreamWriter.close();
                                         if (desFirst.contains("ba2be2ef5db30c83b48d76109643a07d")) {
                                             desFirst = desFirst.replace("ba2be2ef5db30c83b48d76109643a07d", "");
                                         }
                                         Log.e("shit", "filePath12:" + desFirst);
-                                        byte[] decodeSecond = MyBase64.decode(desFirst);
+                                        byte[] decodeSecond = MyBase64.decode(desFirst.getBytes());
 //                                        byte[] decodeSecond = org.apache.commons.codec.binary.Base64.decodeBase64(desFirst.getBytes());
 //                                        byte[] decodeSecond = Base64.decode(desFirst.getBytes(), Base64.DEFAULT);
 
 //                                        byte[] decodeSecond = decoder.decode(desFirst);
-                                        Log.e("shit", "filePath13:" + new String(decodeSecond));
+                                        Log.e("shit", "filePath13:" + new String(decodeSecond, StandardCharsets.UTF_8));
                                         Bitmap bitmap = BitmapFactory.decodeByteArray(decodeSecond, 0, decodeSecond.length);
                                         if (bitmap != null) {
                                             Message msg = new Message();
@@ -211,7 +213,19 @@ public class ImageDercipActivity extends AppCompatActivity {
         BufferedOutputStream bufferedOutputStream = null;
 
         try {
-            byte[] decodeByte = Base64.decode(imgStr, Base64.DEFAULT);
+//            byte[] decodeByteFirst = Base64.decode(imgStr, Base64.DEFAULT);
+            byte[] decodeByteFirst = MyBase64.decode(imgStr);
+
+            String desFirst = new String(decodeByteFirst);
+            Log.e("shit", "filePath1:" + desFirst);
+            if (desFirst.contains("ba2be2ef5db30c83b48d76109643a07d")) {
+                desFirst = desFirst.replace("ba2be2ef5db30c83b48d76109643a07d", "");
+            }
+
+
+//            byte[] decodeByte = Base64.decode(desFirst, Base64.DEFAULT);
+            byte[] decodeByte = MyBase64.decode(desFirst);
+
             File photoFile = new File(Environment.getExternalStorageDirectory() + "/myphoto");
             if (!photoFile.exists()) {
                 photoFile.mkdirs();
