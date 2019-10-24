@@ -55,13 +55,17 @@ public class ImageDercipActivity extends AppCompatActivity {
                                 public void onDownloadSuccess(File dataFile) {
                                     Log.e("shit", "onDownloadSuccess0: " + dataFile.getAbsolutePath());
 
-                                    String str = Base64Util.GetImageStr(dataFile);
-                                    Log.e("shit", "onDownloadSuccess1: " + str);
-                                    if (str.contains("ba2be2ef5db30c83b48d76109643a07d")) {
-                                        str = str.replace("ba2be2ef5db30c83b48d76109643a07d", "");
+                                    try {
+                                        String  str = Base64Util.GetImageStr(dataFile);
+                                        Log.e("shit", "onDownloadSuccess1: " + str);
+                                        if (str.contains("ba2be2ef5db30c83b48d76109643a07d")) {
+                                            str = str.replace("ba2be2ef5db30c83b48d76109643a07d", "");
+                                        }
+                                        Base64Util.GenerateImage(Environment.getExternalStorageDirectory().getAbsolutePath() + "/highImage1", str,handler);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
                                     }
 
-                                    Base64Util.GenerateImage(Environment.getExternalStorageDirectory().getAbsolutePath() + "/highImage1", str);
 
                                     //                                    generateImage(dataFile.getAbsolutePath());
 //                                     byte[] buffer = new byte[1024];

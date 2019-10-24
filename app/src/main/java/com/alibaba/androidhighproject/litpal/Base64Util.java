@@ -2,8 +2,12 @@ package com.alibaba.androidhighproject.litpal;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Base64;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -12,9 +16,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 
 import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 /**
  * *******************************************
@@ -27,7 +31,8 @@ import sun.misc.BASE64Encoder;
 public class Base64Util {
     //    static final String imageFile= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()+"/CameraInit/my_photo.jpg";
     //图片转化成base64字符串
-    public static String GetImageStr(File imgFile) {//将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static String GetImageStr(File imgFile) throws IOException {//将图片文件转化为字节数组字符串，并对其进行Base64编码处理
 //        String imgFile = imageFile;//待处理的图片
         InputStream in = null;
         byte[] data = null;
@@ -40,9 +45,13 @@ public class Base64Util {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        BASE64Decoder decoder = new BASE64Decoder();
+        byte[] bytes = decoder.decodeBuffer(new String(data, StandardCharsets.UTF_8));
+
         //对字节数组Base64编码
-        BASE64Encoder encoder = new BASE64Encoder();
-        return encoder.encode(data);//返回Base64编码过的字节数组字符串
+//        BASE64Encoder encoder = new BASE64Encoder();
+        return new String(bytes, StandardCharsets.UTF_8);//返回Base64编码过的字节数组字符串
 //        return null;
     }
 
@@ -55,7 +64,7 @@ public class Base64Util {
     }
 
 
-    public static boolean GenerateImage(String imageFile, String imgStr) {   //对字节数组字符串进行Base64解码并生成图片
+    public static boolean GenerateImage(String imageFile, String imgStr, Handler handler) {   //对字节数组字符串进行Base64解码并生成图片
         if (imgStr == null) //图像数据为空
             return false;
         BASE64Decoder decoder = new BASE64Decoder();
@@ -67,14 +76,22 @@ public class Base64Util {
                     b[i] += 256;
                 }
             }
-            File dir = new File(imageFile,"");
+            File dir = new File(imageFile, "");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
             //生成jpeg图片
-            String imgFilePath =  "22234.jpg";//新生成的图片
+            String imgFilePath = "22234.jpg";//新生成的图片
             File file = new File(dir, imgFilePath);
             OutputStream out = new FileOutputStream(file);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
+            if (bitmap != null) {
+                Message msg = new Message();
+                msg.what = 123;
+                msg.obj = bitmap;
+                handler.sendMessage(msg);
+            }
+
             out.write(b);
             out.flush();
             out.close();
