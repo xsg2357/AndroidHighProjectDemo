@@ -2,6 +2,7 @@ package com.alibaba.androidhighproject.litpal;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +19,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.androidhighproject.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -47,27 +53,22 @@ public class ImageDercipActivity extends AppCompatActivity {
         setContentView(R.layout.activity_decode_image);
         iv_decode = findViewById(R.id.iv_decode);
 
-        try {
-            new Thread(
-                    () -> DownloadUtil.get().download("http://img.ytztgj.cn/uploads/20191014/9e93d9cfcf93a65e87d20c431aa792f3.jpg?m=b",
-                            Environment.getExternalStorageDirectory().getAbsolutePath() + "/highImage", "test.jpg", new OnDownloadListener() {
-                                @Override
-                                public void onDownloadSuccess(File dataFile) {
-                                    Log.e("shit", "onDownloadSuccess0: " + dataFile.getAbsolutePath());
+        String url = "http://img.ytztgj.cn/uploads/20191014/9e93d9cfcf93a65e87d20c431aa792f3.jpg?m=b";
 
-                                    try {
-                                        String  str = Base64Util.GetImageStr(dataFile);
-                                        Log.e("shit", "onDownloadSuccess1: " + str);
-                                        if (str.contains("ba2be2ef5db30c83b48d76109643a07d")) {
-                                            str = str.replace("ba2be2ef5db30c83b48d76109643a07d", "");
-                                        }
-                                        Base64Util.GenerateImage(Environment.getExternalStorageDirectory().getAbsolutePath() + "/highImage1", str,handler);
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
+        glideDecodeUrl(url);
 
 
-                                    //                                    generateImage(dataFile.getAbsolutePath());
+        //        Log.e("shit","fileEry:" + dataFile.getAbsolutePath());
+
+        //        Resources resources = getResources();
+//        AssetManager am = resources.getAssets();
+//            String[] files = am.getLocales();
+//            for (String file : files) {
+//                Log.e("shit", file);
+//            }
+
+
+        //                                    generateImage(dataFile.getAbsolutePath());
 //                                     byte[] buffer = new byte[1024];
 //
 //
@@ -147,50 +148,13 @@ public class ImageDercipActivity extends AppCompatActivity {
 //                                        is.close();
 //                                        fos.close();
 
-                                        //                                        iv_decode.setImageBitmap(bitmap);
+        //                                        iv_decode.setImageBitmap(bitmap);
 //                                    } catch (FileNotFoundException e) {
 //                                        e.printStackTrace();
 //
 //                                    } catch (IOException e) {
 //                                        e.printStackTrace();
 //                                    }
-
-                                }
-
-                                @Override
-                                public void onDownloading(int progress) {
-//                                    Log.e("shit", "onDownloading: " + progress);
-                                }
-
-                                @Override
-                                public void onDownloadFailed(Exception e) {
-                                    Log.e("shit", "onDownloading: " + e.getMessage());
-                                }
-                            })
-            ).start();
-
-            //获取asserts 某个文件路径的方法
-//        String pathName = "9e93d9cfcf93a65e87d20c431aa792f3(1).jpg";
-            String pathName = "9e93d9cfcf93a65e87d20c431aa792f3.jpg";
-//        String pathName = "6221a66ab2c81bbd10e922b2e473356f_B.txt";
-//        String pathName = "http://img.ytztgj.cn/uploads/20191014/9e93d9cfcf93a65e87d20c431aa792f3.jpg?m=b";
-            File dataFile = new File(getCacheDir(), pathName);
-//            Log.e("shit", "filePath:" + dataFile.getAbsolutePath());
-//        String filePath = dataFile.getAbsolutePath();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.e("shit", "Exception:" + e.getMessage());
-        }
-
-
-        //        Log.e("shit","fileEry:" + dataFile.getAbsolutePath());
-
-        //        Resources resources = getResources();
-//        AssetManager am = resources.getAssets();
-//            String[] files = am.getLocales();
-//            for (String file : files) {
-//                Log.e("shit", file);
-//            }
 
     }
 
@@ -306,5 +270,72 @@ public class ImageDercipActivity extends AppCompatActivity {
             return false;
         }
     });
+
+    public  void   glideDecodeUrl(String url){
+        Glide.with(this).load(url).listener(new RequestListener<Drawable>() {
+            @Override
+            public boolean onLoadFailed(@android.support.annotation.Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                if (e != null) {
+                    Log.e("shit", "onLoadFailed: "+e.getMessage() );
+                    reLoadImage(url);
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                return false;
+            }
+        }).into(iv_decode);
+    }
+
+
+    public  void  reLoadImage(String url){
+        try {
+            new Thread(
+                    () -> DownloadUtil.get().download(url,
+                            Environment.getExternalStorageDirectory().getAbsolutePath() + "/highImage", "test.jpg", new OnDownloadListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                                @Override
+                                public void onDownloadSuccess(File dataFile) {
+                                    Log.e("shit", "onDownloadSuccess0: " + dataFile.getAbsolutePath());
+
+                                    try {
+                                        String str = Base64Util.GetImageStr(dataFile);
+                                        Log.e("shit", "onDownloadSuccess1: " + str);
+                                        if (str.contains("ba2be2ef5db30c83b48d76109643a07d")) {
+                                            str = str.replace("ba2be2ef5db30c83b48d76109643a07d", "");
+                                        }
+                                        Base64Util.GenerateImage(Environment.getExternalStorageDirectory().getAbsolutePath() + "/highImage1", str, handler);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                @Override
+                                public void onDownloading(int progress) {
+//                                    Log.e("shit", "onDownloading: " + progress);
+                                }
+
+                                @Override
+                                public void onDownloadFailed(Exception e) {
+                                    Log.e("shit", "onDownloading: " + e.getMessage());
+                                }
+                            })
+            ).start();
+
+            //获取asserts 某个文件路径的方法
+//        String pathName = "9e93d9cfcf93a65e87d20c431aa792f3(1).jpg";
+            String pathName = "9e93d9cfcf93a65e87d20c431aa792f3.jpg";
+//        String pathName = "6221a66ab2c81bbd10e922b2e473356f_B.txt";
+//        String pathName = "http://img.ytztgj.cn/uploads/20191014/9e93d9cfcf93a65e87d20c431aa792f3.jpg?m=b";
+            File dataFile = new File(getCacheDir(), pathName);
+//            Log.e("shit", "filePath:" + dataFile.getAbsolutePath());
+//        String filePath = dataFile.getAbsolutePath();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("shit", "Exception:" + e.getMessage());
+        }
+    }
 
 }

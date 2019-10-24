@@ -34,7 +34,7 @@ public class Base64Util {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static String GetImageStr(File imgFile) throws IOException {//将图片文件转化为字节数组字符串，并对其进行Base64编码处理
 //        String imgFile = imageFile;//待处理的图片
-        InputStream in = null;
+        InputStream in ;
         byte[] data = null;
         //读取图片字节数组
         try {
@@ -52,7 +52,6 @@ public class Base64Util {
         //对字节数组Base64编码
 //        BASE64Encoder encoder = new BASE64Encoder();
         return new String(bytes, StandardCharsets.UTF_8);//返回Base64编码过的字节数组字符串
-//        return null;
     }
 
     //Bitmap—》Base64
