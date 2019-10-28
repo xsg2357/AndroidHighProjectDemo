@@ -11,9 +11,9 @@
 * JNI：就是当前JNI.this
 */
 // JNIEXPORT jstring JNICALL
-jstring com_alibaba_androidhighproject_jni_study_JNI_sayHello(JNIEnv *env,jobject jobj){
+jstring Java_com_alibaba_androidhighproject_jni_1study_JNI_sayHello(JNIEnv *env,jobject jobj){
 
-   char *text = 'Hello ,I  am  from c';
+   char *text =  'Hello ,I  am  from c';
 
    return (*env)->NewStringUTF(env,text);
 }

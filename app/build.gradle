@@ -16,14 +16,24 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
         ndk {
             moduleName "Hello" //so文件 lib+moduleName+.so
-            abiFilters "armeabi", "armeabi-v7a", "x86" //cpu的类型
+            abiFilters  "armeabi-v7a", "x86_64","x86","arm64-v8a" //cpu的类型
         }
     }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/jni/CMakeLists.txt"
         }
     }
 

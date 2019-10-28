@@ -10,5 +10,5 @@ package com.alibaba.androidhighproject.jni_study;
  */
 public class JNIStudy {
 
-    public static native  String sayHello();
+    public static native  String sayStudy();
 }
