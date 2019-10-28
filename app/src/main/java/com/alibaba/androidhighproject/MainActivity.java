@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.alibaba.androidhighproject.RxJava.binding.RxBindingTest1Act;
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
 import com.alibaba.androidhighproject.constraint.ConstraintMainAct;
+import com.alibaba.androidhighproject.jni_study.JNIMenuActivity;
 import com.alibaba.androidhighproject.litpal.ImageDercipActivity;
 import com.alibaba.androidhighproject.recyclerrefresh.DiffRecyclerActivity;
 import com.alibaba.androidhighproject.touchClick.TouchActivity;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mData.add("OkHttp3:WebSocket");
         mData.add("RecyclerView最好的伙伴：AsyncListDiffer");
         mData.add("ImageDercip：图片解密");
+        mData.add("JNI开发：入门");
     }
 
 
@@ -101,8 +103,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (i == 5) {//OkHttp3:Recycler_DIff
             startActivity(new Intent(this, DiffRecyclerActivity.class));
         }
-        if (i == 6) {//OkHttp3:ImageDercip
+        if (i == 6) {//OkHttp3:ImageDercip 图片解密
             startActivity(new Intent(this, ImageDercipActivity.class));
+        }
+        if (i == 7) {//JNI开发：入门
+            startActivity(new Intent(this, JNIMenuActivity.class));
         }
 
     }

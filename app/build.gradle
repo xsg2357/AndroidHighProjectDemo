@@ -16,7 +16,18 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        ndk {
+            moduleName "Hello" //so文件 lib+moduleName+.so
+            abiFilters "armeabi", "armeabi-v7a", "x86" //cpu的类型
+        }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false

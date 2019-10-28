@@ -46,6 +46,7 @@
         <activity android:name=".constraint.ConstraintPercentAct" />
         <activity android:name=".constraint.ConstraintLineAct" />
         <activity android:name=".RxJava.binding.RxBindingTest1Act" />
+        <activity android:name=".jni_study.JNIMenuActivity" />
     </application>
 
 </manifest>
