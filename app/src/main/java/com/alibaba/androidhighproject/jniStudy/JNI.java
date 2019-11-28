@@ -1,4 +1,4 @@
-package com.alibaba.androidhighproject.jni_study;
+package com.alibaba.androidhighproject.jniStudy;
 
 /**
  * *******************************************

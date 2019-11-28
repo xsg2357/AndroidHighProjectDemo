@@ -14,7 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.alibaba.androidhighproject.RxJava.binding.RxBindingTest1Act;
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
 import com.alibaba.androidhighproject.constraint.ConstraintMainAct;
-import com.alibaba.androidhighproject.jni_study.JNIMenuActivity;
+import com.alibaba.androidhighproject.jniStudy.JNIMenuActivity;
 import com.alibaba.androidhighproject.litpal.ImageDercipActivity;
 import com.alibaba.androidhighproject.recyclerrefresh.DiffRecyclerActivity;
 import com.alibaba.androidhighproject.touchClick.TouchActivity;

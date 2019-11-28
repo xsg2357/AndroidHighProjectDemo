@@ -1,4 +1,4 @@
-package com.alibaba.androidhighproject.jni_study;
+package com.alibaba.androidhighproject.jniStudy;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,6 @@ import com.alibaba.androidhighproject.touchClick.TouchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * *******************************************
