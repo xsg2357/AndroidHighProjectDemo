@@ -2,6 +2,7 @@ package com.alibaba.androidhighproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.alibaba.androidhighproject.RxJava.binding.RxBindingTest1Act;
 import com.alibaba.androidhighproject.adapter.MainContentAdapter;
 import com.alibaba.androidhighproject.constraint.ConstraintMainAct;
+import com.alibaba.androidhighproject.http.Api;
+import com.alibaba.androidhighproject.http.ApiService;
+import com.alibaba.androidhighproject.http.BaseObserver;
 import com.alibaba.androidhighproject.jniStudy.JNIMenuActivity;
 import com.alibaba.androidhighproject.litpal.ImageDercipActivity;
 import com.alibaba.androidhighproject.recyclerrefresh.DiffRecyclerActivity;
@@ -22,9 +26,20 @@ import com.alibaba.androidhighproject.touchClick.TouchGroupActivity;
 import com.alibaba.androidhighproject.websocket.WsMainActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -58,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mData.add("RecyclerView最好的伙伴：AsyncListDiffer");
         mData.add("ImageDercip：图片解密");
         mData.add("JNI开发：入门");
+        mData.add("JNI开发：入门1");
+        mData.add("JNI开发：入门2");
     }
 
 
@@ -107,6 +124,55 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(new Intent(this, ImageDercipActivity.class));
         }
         if (i == 7) {//JNI开发：入门
+            startActivity(new Intent(this, JNIMenuActivity.class));
+        }
+        if (i == 8) {//JNI开发：入门
+//            startActivity(new Intent(this, JNIMenuActivity.class));
+            Map<String, Object> fl = new HashMap<>();
+
+            Api instance = Api.getInstance();
+            CompositeDisposable disposable = new CompositeDisposable();
+            FormBody.Builder mBuild = new FormBody.Builder();
+            mBuild
+                    .add("scope", "order")
+                    .add("grant_type", "client_credentials")
+            ;
+            RequestBody requestBodyPost = mBuild.build();
+            Observable<JsonObject> login = instance.create(ApiService.class,0).login(requestBodyPost);
+            disposable.add(login.subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new BaseObserver<JsonObject>() {
+                        @Override
+                        protected void onResultSuccess(JsonObject s) {
+//                            Log.e("shit", "onResultSuccess: " + s);
+                            Map<String, Object> fl = new HashMap<>();
+                            Log.e("shit", "onResultSuccess: "+s.get("access_token") );
+                            fl.put("access_token",s.get("access_token"));
+
+                            Api instanceLL = Api.getInstance();
+                            Observable<JsonObject> load = instanceLL.create(ApiService.class,1).load(fl);
+                            disposable.add(load.subscribeOn(Schedulers.newThread())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribeWith(new BaseObserver<JsonObject>() {
+                                        @Override
+                                        protected void onResultSuccess(JsonObject s) {
+                                            Log.e("shit", "onResultSuccess: " + s);
+                                        }
+
+                                        @Override
+                                        protected void onResultError(Throwable e) {
+                                            Log.e("shit", "onResultError: " + e.getLocalizedMessage());
+                                        }
+                                    }));
+                        }
+
+                        @Override
+                        protected void onResultError(Throwable e) {
+                            Log.e("shit", "onResultError: " + e.getLocalizedMessage());
+                        }
+                    }));
+        }
+        if (i == 9) {//JNI开发：入门
             startActivity(new Intent(this, JNIMenuActivity.class));
         }
 
